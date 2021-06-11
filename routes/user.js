@@ -92,7 +92,7 @@ router.get('/',verifyAuth,verifyLogin,(req,res)=>{
         }
         res.json({Message:"Home",User:user})
     }catch(err){
-        res.json(err)
+        res.status(500).json("Server error")
     }
     
 })
@@ -100,7 +100,7 @@ router.get('/',verifyAuth,verifyLogin,(req,res)=>{
 //logout route
 router.get('/logout',verifyAuth,(req,res)=>{
     try{
-       req.session.userLoggedIn=null
+       req.session.userLoggedIn=null//clearing or making the session null
         res.json("Logouted ")
     }catch(err){
         res.json(err)
